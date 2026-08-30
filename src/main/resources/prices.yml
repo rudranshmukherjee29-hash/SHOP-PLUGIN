@@ -1,0 +1,476 @@
+# ============================================================================
+# ShopPlugin prices.yml
+# ============================================================================
+# This file defines the full curated vanilla item catalog and its default
+# balanced prices. See README.md ("Economy Balancing") for the full
+# reasoning behind these numbers. Short version of the rules used:
+#
+#   - sell-price is ALWAYS well below buy-price (never enough margin for a
+#     direct buy->sell profit).
+#   - Where an item can be crafted, smelted, compressed, or decompressed
+#     into/from another shop item, prices are set so doing that conversion
+#     and selling the result is not profitable in either direction.
+#   - Common/renewable items are cheap; rare, dangerous, or
+#     progression-gating items are expensive and, in a few cases,
+#     intentionally not purchasable at all (only sellable, or excluded
+#     from the shop entirely) to protect progression.
+#
+# Run `/shopadmin validateprices` after editing this file to check for
+# accidental arbitrage loops before reloading on a live server.
+#
+# Fields per item:
+#   material:               Bukkit Material enum name (required)
+#   category:                One of the ShopCategory values (required)
+#   buy-price:               Omit or remove to disable buying
+#   sell-price:              Omit or remove to disable selling
+#   max-transaction-size:    Per-item cap on a single buy/sell (default 6400)
+#   limited-stock:           true/false (default false = unlimited)
+#   max-stock:               Only used if limited-stock: true
+#   restock-amount:          Amount restocked per interval (limited-stock only)
+#   restock-interval-seconds:
+#   per-player-daily-limit:  -1 = unlimited
+#   display-name:            Optional MiniMessage override for GUI display
+# ============================================================================
+
+items:
+
+  # --------------------------------------------------------------------
+  # BLOCKS
+  # --------------------------------------------------------------------
+  dirt:
+    material: DIRT
+    category: BLOCKS
+    buy-price: "1.5"
+    sell-price: "0.4"
+  sand:
+    material: SAND
+    category: BLOCKS
+    buy-price: "2"
+    sell-price: "0.5"
+  gravel:
+    material: GRAVEL
+    category: BLOCKS
+    buy-price: "2"
+    sell-price: "0.5"
+  cobblestone:
+    material: COBBLESTONE
+    category: BLOCKS
+    buy-price: "2.5"
+    sell-price: "0.7"
+  stone:
+    material: STONE
+    category: BLOCKS
+    buy-price: "3"
+    sell-price: "0.6"
+  granite:
+    material: GRANITE
+    category: BLOCKS
+    buy-price: "3"
+    sell-price: "0.6"
+  netherrack:
+    material: NETHERRACK
+    category: BLOCKS
+    buy-price: "2.5"
+    sell-price: "0.6"
+  glass:
+    material: GLASS
+    category: BLOCKS
+    buy-price: "4"
+    sell-price: "0.8"
+  oak_log:
+    material: OAK_LOG
+    category: BLOCKS
+    buy-price: "6"
+    sell-price: "3"
+  spruce_log:
+    material: SPRUCE_LOG
+    category: BLOCKS
+    buy-price: "6"
+    sell-price: "3"
+  oak_planks:
+    material: OAK_PLANKS
+    category: BLOCKS
+    buy-price: "2"
+    sell-price: "0.5"
+  bookshelf:
+    material: BOOKSHELF
+    category: BLOCKS
+    buy-price: "45"
+    sell-price: "15"
+  clay_ball:
+    material: CLAY_BALL
+    category: BLOCKS
+    buy-price: "3"
+    sell-price: "1"
+  terracotta:
+    material: TERRACOTTA
+    category: BLOCKS
+    buy-price: "3"
+    sell-price: "0.8"
+  sandstone:
+    material: SANDSTONE
+    category: BLOCKS
+    buy-price: "4"
+    sell-price: "0.9"
+
+  # --------------------------------------------------------------------
+  # ORES & MINERALS
+  # --------------------------------------------------------------------
+  coal:
+    material: COAL
+    category: ORES_AND_MINERALS
+    buy-price: "10"
+    sell-price: "4"
+  raw_iron:
+    material: RAW_IRON
+    category: ORES_AND_MINERALS
+    sell-price: "12"
+    # No buy-price: buying raw iron and smelting it into ingots to sell
+    # would otherwise be a near-free profit loop (see README).
+  iron_ingot:
+    material: IRON_INGOT
+    category: ORES_AND_MINERALS
+    buy-price: "34"
+    sell-price: "14"
+  iron_block:
+    material: IRON_BLOCK
+    category: ORES_AND_MINERALS
+    buy-price: "316"
+    sell-price: "119"
+    # 9x sell(iron_ingot)=126; kept just under so decompressing a bought
+    # block into ingots to sell is never better than selling the block whole.
+  raw_copper:
+    material: RAW_COPPER
+    category: ORES_AND_MINERALS
+    sell-price: "6"
+  copper_ingot:
+    material: COPPER_INGOT
+    category: ORES_AND_MINERALS
+    buy-price: "18"
+    sell-price: "7"
+  copper_block:
+    material: COPPER_BLOCK
+    category: ORES_AND_MINERALS
+    buy-price: "168"
+    sell-price: "59"
+  raw_gold:
+    material: RAW_GOLD
+    category: ORES_AND_MINERALS
+    sell-price: "18"
+  gold_ingot:
+    material: GOLD_INGOT
+    category: ORES_AND_MINERALS
+    buy-price: "50"
+    sell-price: "21"
+    # Gold is AFK-farmable via zombified piglin/piglin bartering farms in
+    # the Nether; sell price is kept modest relative to its rarity for
+    # this reason (see README).
+  gold_block:
+    material: GOLD_BLOCK
+    category: ORES_AND_MINERALS
+    buy-price: "465"
+    sell-price: "178"
+  redstone:
+    material: REDSTONE
+    category: ORES_AND_MINERALS
+    buy-price: "9"
+    sell-price: "3"
+  redstone_block:
+    material: REDSTONE_BLOCK
+    category: ORES_AND_MINERALS
+    buy-price: "84"
+    sell-price: "25"
+  lapis_lazuli:
+    material: LAPIS_LAZULI
+    category: ORES_AND_MINERALS
+    buy-price: "8"
+    sell-price: "3"
+  diamond:
+    material: DIAMOND
+    category: ORES_AND_MINERALS
+    buy-price: "220"
+    sell-price: "90"
+  emerald:
+    material: EMERALD
+    category: ORES_AND_MINERALS
+    buy-price: "140"
+    sell-price: "60"
+  netherite_scrap:
+    material: NETHERITE_SCRAP
+    category: ORES_AND_MINERALS
+    sell-price: "220"
+    # No buy-price and netherite_ingot is intentionally excluded from the
+    # shop entirely: buying either would trivialize the game's top
+    # progression tier. Scrap remains sellable as a reward for the risky
+    # ancient-debris mining required to obtain it.
+  ancient_debris:
+    material: ANCIENT_DEBRIS
+    category: ORES_AND_MINERALS
+    sell-price: "260"
+
+  # --------------------------------------------------------------------
+  # FARMING
+  # --------------------------------------------------------------------
+  wheat:
+    material: WHEAT
+    category: FARMING
+    buy-price: "2.5"
+    sell-price: "1"
+  wheat_seeds:
+    material: WHEAT_SEEDS
+    category: FARMING
+    buy-price: "0.8"
+    sell-price: "0.3"
+  carrot:
+    material: CARROT
+    category: FARMING
+    buy-price: "1.5"
+    sell-price: "0.6"
+  potato:
+    material: POTATO
+    category: FARMING
+    buy-price: "1.5"
+    sell-price: "0.6"
+  beetroot:
+    material: BEETROOT
+    category: FARMING
+    buy-price: "1.2"
+    sell-price: "0.5"
+  beetroot_seeds:
+    material: BEETROOT_SEEDS
+    category: FARMING
+    buy-price: "0.8"
+    sell-price: "0.3"
+  melon_slice:
+    material: MELON_SLICE
+    category: FARMING
+    buy-price: "1"
+    sell-price: "0.4"
+  pumpkin:
+    material: PUMPKIN
+    category: FARMING
+    buy-price: "4"
+    sell-price: "2"
+  sugar_cane:
+    material: SUGAR_CANE
+    category: FARMING
+    buy-price: "2"
+    sell-price: "0.8"
+  cocoa_beans:
+    material: COCOA_BEANS
+    category: FARMING
+    buy-price: "3.5"
+    sell-price: "1.5"
+  nether_wart:
+    material: NETHER_WART
+    category: FARMING
+    buy-price: "3"
+    sell-price: "1"
+
+  # --------------------------------------------------------------------
+  # MOB DROPS
+  # --------------------------------------------------------------------
+  rotten_flesh:
+    material: ROTTEN_FLESH
+    category: MOB_DROPS
+    sell-price: "0.2"
+  bone:
+    material: BONE
+    category: MOB_DROPS
+    buy-price: "3.5"
+    sell-price: "1.5"
+  bone_meal:
+    material: BONE_MEAL
+    category: MOB_DROPS
+    buy-price: "1.5"
+    sell-price: "0.5"
+  string:
+    material: STRING
+    category: MOB_DROPS
+    buy-price: "3.5"
+    sell-price: "1.5"
+  spider_eye:
+    material: SPIDER_EYE
+    category: MOB_DROPS
+    sell-price: "1.2"
+  gunpowder:
+    material: GUNPOWDER
+    category: MOB_DROPS
+    buy-price: "5"
+    sell-price: "2"
+  ender_pearl:
+    material: ENDER_PEARL
+    category: MOB_DROPS
+    buy-price: "40"
+    sell-price: "15"
+  blaze_rod:
+    material: BLAZE_ROD
+    category: MOB_DROPS
+    buy-price: "55"
+    sell-price: "20"
+  leather:
+    material: LEATHER
+    category: MOB_DROPS
+    buy-price: "6"
+    sell-price: "2.5"
+  feather:
+    material: FEATHER
+    category: MOB_DROPS
+    buy-price: "2"
+    sell-price: "0.8"
+
+  # --------------------------------------------------------------------
+  # FOOD
+  # --------------------------------------------------------------------
+  bread:
+    material: BREAD
+    category: FOOD
+    buy-price: "4"
+    sell-price: "1.5"
+  cooked_beef:
+    material: COOKED_BEEF
+    category: FOOD
+    buy-price: "8"
+    sell-price: "3"
+  cooked_porkchop:
+    material: COOKED_PORKCHOP
+    category: FOOD
+    buy-price: "8"
+    sell-price: "3"
+  cooked_chicken:
+    material: COOKED_CHICKEN
+    category: FOOD
+    buy-price: "6"
+    sell-price: "2"
+  cooked_potato:
+    material: BAKED_POTATO
+    category: FOOD
+    buy-price: "3"
+    sell-price: "1"
+  apple:
+    material: APPLE
+    category: FOOD
+    buy-price: "3"
+    sell-price: "1"
+  golden_carrot:
+    material: GOLDEN_CARROT
+    category: FOOD
+    buy-price: "15"
+    # No sell-price: golden carrots are craftable from (cheap) carrots plus
+    # gold nuggets; disabling selling prevents converting shop gold into
+    # golden carrots for a resale loop.
+  cake:
+    material: CAKE
+    category: FOOD
+    buy-price: "20"
+    sell-price: "6"
+
+  # --------------------------------------------------------------------
+  # REDSTONE & UTILITY
+  # --------------------------------------------------------------------
+  repeater:
+    material: REPEATER
+    category: REDSTONE_AND_UTILITY
+    buy-price: "10"
+    sell-price: "4"
+  comparator:
+    material: COMPARATOR
+    category: REDSTONE_AND_UTILITY
+    buy-price: "16"
+    sell-price: "6"
+  piston:
+    material: PISTON
+    category: REDSTONE_AND_UTILITY
+    buy-price: "16"
+    sell-price: "6"
+  sticky_piston:
+    material: STICKY_PISTON
+    category: REDSTONE_AND_UTILITY
+    buy-price: "20"
+    sell-price: "7"
+  hopper:
+    material: HOPPER
+    category: REDSTONE_AND_UTILITY
+    buy-price: "60"
+    sell-price: "8"
+    per-player-daily-limit: 64
+    # Hoppers are the single most automation-relevant item in the catalog;
+    # kept expensive to buy, cheap to sell back, and capped per-player per
+    # day so a hopper-based farm can't be bootstrapped purely from shop
+    # purchases at scale (see README).
+  rail:
+    material: RAIL
+    category: REDSTONE_AND_UTILITY
+    buy-price: "5"
+    sell-price: "1.5"
+  powered_rail:
+    material: POWERED_RAIL
+    category: REDSTONE_AND_UTILITY
+    buy-price: "12"
+    sell-price: "4"
+  chest:
+    material: CHEST
+    category: REDSTONE_AND_UTILITY
+    buy-price: "8"
+    sell-price: "2"
+  lever:
+    material: LEVER
+    category: REDSTONE_AND_UTILITY
+    buy-price: "3"
+    sell-price: "1"
+
+  # --------------------------------------------------------------------
+  # NETHER & END
+  # --------------------------------------------------------------------
+  quartz:
+    material: QUARTZ
+    category: NETHER_AND_END
+    buy-price: "8"
+    sell-price: "3"
+  glowstone_dust:
+    material: GLOWSTONE_DUST
+    category: NETHER_AND_END
+    buy-price: "7"
+    sell-price: "2.5"
+  magma_cream:
+    material: MAGMA_CREAM
+    category: NETHER_AND_END
+    buy-price: "16"
+    sell-price: "6"
+  chorus_fruit:
+    material: CHORUS_FRUIT
+    category: NETHER_AND_END
+    buy-price: "6"
+    sell-price: "2"
+  popped_chorus_fruit:
+    material: POPPED_CHORUS_FRUIT
+    category: NETHER_AND_END
+    sell-price: "1.5"
+  shulker_shell:
+    material: SHULKER_SHELL
+    category: NETHER_AND_END
+    sell-price: "150"
+    max-transaction-size: 64
+    # No buy-price: shulker shells gate shulker box crafting, an important
+    # end-game convenience item; buying them would trivialize that
+    # progression. Selling remains available as a reward for exploring
+    # End cities.
+  end_stone:
+    material: END_STONE
+    category: NETHER_AND_END
+    buy-price: "5"
+    sell-price: "1.5"
+  dragon_breath:
+    material: DRAGON_BREATH
+    category: NETHER_AND_END
+    sell-price: "40"
+
+# Note on intentional exclusions from this catalog (see README for full
+# reasoning): nether_star, elytra, totem_of_undying, dragon_egg, and
+# enchanted golden apples are deliberately NOT included. These are
+# boss-drop, structure-loot, or otherwise singular/high-stakes items whose
+# presence in a routine buy/sell shop would either trivialize a boss fight
+# reward or create an attention-sink "sell your one totem" edge case that
+# doesn't fit a curated survival economy. Server owners who want to include
+# them can add entries following the same format above, but should think
+# carefully about buy-price (if any) before doing so.

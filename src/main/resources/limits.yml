@@ -1,0 +1,33 @@
+# ============================================================================
+# ShopPlugin limits.yml — stock & purchase limit configuration
+# ============================================================================
+# Per-item stock and daily purchase limits are primarily configured directly
+# on the item in prices.yml (limited-stock, max-stock, restock-amount,
+# restock-interval-seconds, per-player-daily-limit) since those settings are
+# tightly coupled to that item's price. This file controls the *global*
+# behavior of the stock system.
+
+stock:
+  # Master switch: if false, all limited-stock settings in prices.yml are
+  # ignored and every item behaves as unlimited stock. Useful for quickly
+  # disabling the stock system network-wide without editing every item.
+  enabled: true
+
+  # How often (in seconds) the plugin checks all limited-stock items for
+  # scheduled restocking, based on each item's restock-interval-seconds.
+  restock-check-interval-seconds: 60
+
+  # Whether restocking still occurs while no players are online. Disabling
+  # this can slightly reduce unnecessary work on very small servers, at the
+  # cost of stock not being "fresh" for the first player to log in after a
+  # long downtime — it will restock on the next check tick instead.
+  restock-while-empty: true
+
+daily-limits:
+  # Timezone used when resetting per-player-daily-limit counters. Uses the
+  # system default if left blank. Example: "America/New_York", "UTC".
+  reset-timezone: ""
+
+  # Hour of day (0-23, server-local in the timezone above) at which daily
+  # purchase counters reset.
+  reset-hour: 0

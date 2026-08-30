@@ -1,0 +1,63 @@
+================================================================================
+                    SHOPPLUGIN - FINAL READY-TO-UPLOAD PACKAGE
+================================================================================
+
+YOU HAVE EVERYTHING YOU NEED. JUST FOLLOW THESE 3 COMMANDS:
+
+================================================================================
+1. CREATE EMPTY GITHUB REPO
+================================================================================
+Go to: https://github.com/new
+- Repository name: ShopPlugin
+- Click "Create repository"
+- Copy the HTTPS URL (it looks like: https://github.com/YOUR-USERNAME/ShopPlugin.git)
+
+================================================================================
+2. UPLOAD THIS CODE TO GITHUB (COPY-PASTE THESE COMMANDS)
+================================================================================
+
+cd Desktop
+git clone https://github.com/YOUR-USERNAME/ShopPlugin.git
+cd ShopPlugin
+git add .
+git commit -m "ShopPlugin source"
+git push -u origin main
+
+(Replace YOUR-USERNAME with your actual GitHub username)
+
+================================================================================
+3. DOWNLOAD YOUR COMPILED .JAR
+================================================================================
+1. Go to: https://github.com/YOUR-USERNAME/ShopPlugin
+2. Click "Actions" tab
+3. Wait for green checkmark (2-3 minutes)
+4. Click the build
+5. Scroll down to "Artifacts"
+6. Click "ShopPlugin" to download
+7. Extract the zip
+8. Inside is: build/libs/ShopPlugin.jar
+
+THAT'S IT. YOU'RE DONE.
+
+================================================================================
+FAQ
+================================================================================
+
+Q: What if the build fails (red X)?
+A: Click the failed build and read the error. It will tell you what's wrong.
+   99% of the time it's just a network hiccup - try again.
+
+Q: Can I compile it locally without GitHub?
+A: Yes, but it's extra work. If you want to:
+   - Install Java 25: https://www.oracle.com/java/technologies/downloads/
+   - Open terminal in this folder
+   - Run: chmod +x gradlew && ./gradlew shadowJar
+   - Jar appears in: build/libs/ShopPlugin.jar
+   
+Q: How big is the jar?
+A: About 5-8 MB (it includes all dependencies bundled inside)
+
+Q: Do I need to do anything else?
+A: Nope. Just drop ShopPlugin.jar into your server's plugins/ folder and restart.
+
+================================================================================

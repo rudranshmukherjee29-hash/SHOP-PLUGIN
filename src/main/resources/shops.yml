@@ -1,0 +1,20 @@
+# ============================================================================
+# ShopPlugin shops.yml — shop-level metadata
+# ============================================================================
+# This plugin ships with a single unified shop (accessed via /shop) rather
+# than multiple separate shop instances, per the design goal of staying
+# focused rather than becoming a multi-shop framework. This file exists for
+# shop-wide identity/branding settings that don't belong in gui.yml (layout)
+# or config.yml (behavior).
+
+shop:
+  name: "Server Shop"
+
+  # Shown in command feedback and can be referenced by PlaceholderAPI
+  # placeholders if you build custom ones around this value.
+  description: "The official server shop for vanilla materials."
+
+  # If true, players see a one-time welcome message the first time they
+  # open the shop in a session (per login), reminding them of /sellall,
+  # /sellhand, and /shop search.
+  show-welcome-tip: true

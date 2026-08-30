@@ -1,0 +1,68 @@
+name: ShopPlugin
+version: '${version}'
+main: net.shopplugin.ShopPlugin
+api-version: '26.2'
+author: ShopPlugin
+description: A secure, high-performance vanilla-item GUI shop and economy plugin.
+website: https://example.com
+
+softdepend: [Vault, PlaceholderAPI, LuckPerms, Essentials, EconomyGUI, Floodgate]
+load: POSTWORLD
+
+commands:
+  shop:
+    description: Open the shop GUI.
+    usage: /shop [category]
+    permission: shopplugin.shop
+    permission-message: You do not have permission to use the shop.
+  sellall:
+    description: Sell all sellable items in your inventory.
+    usage: /sellall
+    permission: shopplugin.sellall
+  sellhand:
+    description: Sell the item in your main hand.
+    usage: /sellhand
+    permission: shopplugin.sell
+  sellinventory:
+    description: Sell all sellable items in your inventory (alias of /sellall).
+    usage: /sellinventory
+    permission: shopplugin.sellall
+  shopadmin:
+    description: Administrative shop commands.
+    usage: /shopadmin <reload|stats|givebalance|audit|validateprices>
+    permission: shopplugin.admin
+
+permissions:
+  shopplugin.shop:
+    description: Allows opening the shop GUI.
+    default: true
+  shopplugin.sell:
+    description: Allows selling items.
+    default: true
+  shopplugin.sellall:
+    description: Allows selling all items at once.
+    default: true
+  shopplugin.buy:
+    description: Allows buying items.
+    default: true
+  shopplugin.bypasslimits:
+    description: Allows bypassing purchase and stock limits.
+    default: op
+  shopplugin.admin:
+    description: Allows access to all administrative commands.
+    default: op
+  shopplugin.admin.reload:
+    description: Allows reloading plugin configuration.
+    default: op
+  shopplugin.admin.stats:
+    description: Allows viewing shop statistics.
+    default: op
+  shopplugin.admin.givebalance:
+    description: Allows granting balance to players.
+    default: op
+  shopplugin.admin.audit:
+    description: Allows auditing item transaction history.
+    default: op
+  shopplugin.admin.validateprices:
+    description: Allows running the price validation tool.
+    default: op

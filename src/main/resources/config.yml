@@ -1,0 +1,52 @@
+# ============================================================================
+# ShopPlugin config.yml — main settings
+# ============================================================================
+
+# Enable verbose debug logging. Leave false on production servers.
+debug: false
+
+database:
+  # "sqlite" (default, zero-config, fine for most servers) or "mysql"
+  # (recommended for large networks or multi-server setups sharing one
+  # economy/statistics backend).
+  type: sqlite
+
+  mysql:
+    host: localhost
+    port: 3306
+    database: shopplugin
+    username: shopplugin
+    password: "changeme"
+    use-ssl: false
+
+limits:
+  # Hard ceiling applied to every item's max-transaction-size, regardless of
+  # what is configured per-item in prices.yml. Set to -1 to disable (not
+  # recommended — always keep a sane global ceiling as defense in depth).
+  global-max-transaction-size: 6400
+
+security:
+  # Minimum milliseconds between a single player's shop transactions.
+  # Protects against packet-spam / macro-click exploits without being
+  # noticeable in normal play.
+  rate-limit-millis: 150
+
+gui:
+  # Player-visible currency symbol shown in the GUI (does not affect the
+  # actual currency used, which is whatever Vault's active economy provides).
+  currency-symbol: "$"
+
+  # Purchases/sales at or above this total value open a confirmation screen
+  # instead of executing immediately.
+  confirm-large-transactions: true
+  confirmation-threshold: 5000.0
+
+sounds:
+  enabled: true
+  purchase: ENTITY_EXPERIENCE_ORB_PICKUP
+  sell: ENTITY_VILLAGER_YES
+  error: ENTITY_VILLAGER_NO
+
+integrations:
+  placeholderapi: true
+  luckperms-permission-hints: true

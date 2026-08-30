@@ -1,0 +1,44 @@
+# ============================================================================
+# ShopPlugin messages.yml — all player-facing text
+# ============================================================================
+# Supports MiniMessage formatting. Placeholders available per message are
+# shown in comments; {prefix} is always available and expands to the
+# 'prefix' message below.
+
+messages:
+  prefix: "<gray>[<gold>Shop</gold>]</gray> "
+
+  # {quantity}, {item}, {price}
+  buy-success: "<prefix><green>Bought {quantity}x {item} for {price}.</green>"
+  sell-success: "<prefix><green>Sold {quantity}x {item} for {price}.</green>"
+
+  # {count}, {total}
+  sellall-summary: "<prefix><green>Sold {count} item type(s) for a total of {total}.</green>"
+  sellall-nothing: "<prefix><yellow>You have nothing sellable in your inventory.</yellow>"
+
+  insufficient-funds: "<prefix><red>You don't have enough money for that.</red>"
+  insufficient-items: "<prefix><red>You don't have that many of this item.</red>"
+  inventory-full: "<prefix><red>Your inventory is full.</red>"
+  out-of-stock: "<prefix><red>That item is out of stock.</red>"
+  purchase-limit-reached: "<prefix><red>You've reached your daily limit for this item.</red>"
+  buy-disabled: "<prefix><red>This item cannot be purchased.</red>"
+  sell-disabled: "<prefix><red>This item cannot be sold here.</red>"
+  invalid-quantity: "<prefix><red>Invalid quantity.</red>"
+  economy-unavailable: "<prefix><red>The economy is temporarily unavailable. Please try again shortly.</red>"
+
+  # {reason}
+  economy-failure: "<prefix><red>Transaction failed: {reason}</red>"
+
+  transaction-conflict: "<prefix><red>Please wait for your current transaction to finish.</red>"
+  internal-error: "<prefix><red>Something went wrong. No money or items were exchanged.</red>"
+  no-permission: "<prefix><red>You don't have permission to do that.</red>"
+  item-not-found: "<prefix><red>That item doesn't exist.</red>"
+  search-prompt: "<prefix><yellow>Type your search in chat, or type 'cancel' to abort.</yellow>"
+
+  # {action}, {quantity}, {item}, {price}
+  confirm-prompt: "<prefix><yellow>Confirm: {action} {quantity}x {item} for {price}?</yellow>"
+
+  reload-success: "<prefix><green>Configuration reloaded successfully.</green>"
+
+  # {reason}
+  reload-failure: "<prefix><red>Reload failed: {reason}</red>"

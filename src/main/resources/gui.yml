@@ -1,0 +1,31 @@
+# ============================================================================
+# ShopPlugin gui.yml — titles, layout, and visual configuration
+# ============================================================================
+# All title strings support MiniMessage formatting
+# (https://docs.advntr.dev/minimessage/format.html).
+
+titles:
+  main-menu: "<gradient:gold:yellow><bold>Server Shop</bold></gradient>"
+  category: "<gold>{category}</gold>"
+  search: "<gold>Search Results</gold>"
+
+layout:
+  # Slots (0-53 in a 54-slot inventory) filled with a decorative pane.
+  # Leave empty to use the default bottom-row border.
+  decorative-slots: []
+  decorative-material: GRAY_STAINED_GLASS_PANE
+
+  previous-page-slot: 45
+  next-page-slot: 53
+  back-button-slot: 49
+  close-button-slot: 48
+  search-button-slot: 50
+
+  # How many shop items are shown per page in category/search views.
+  items-per-page: 28
+
+sounds:
+  enabled: true
+  purchase: ENTITY_EXPERIENCE_ORB_PICKUP
+  sell: ENTITY_VILLAGER_YES
+  error: ENTITY_VILLAGER_NO
